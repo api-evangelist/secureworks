@@ -1,0 +1,63 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.ctpx.secureworks.com/graphql",
+    "headers": {
+      "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "query": "query GetAlerts($input: AlertsInput!) { alerts(input: $input) { alerts { id severity status message createdAt mitreTactic mitreTechnique assets { hostname ipAddress } } totalCount } }",
+      "variables": {
+        "input": {
+          "limit": 10,
+          "offset": 0,
+          "severity": ["critical", "high"],
+          "status": ["open"]
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "data": {
+        "alerts": {
+          "alerts": [
+            {
+              "id": "alert-xyz-001",
+              "severity": "critical",
+              "status": "open",
+              "message": "Suspicious PowerShell execution detected",
+              "createdAt": "2026-05-02T14:32:00Z",
+              "mitreTactic": "Execution",
+              "mitreTechnique": "T1059.001",
+              "assets": [
+                {
+                  "hostname": "workstation-42",
+                  "ipAddress": "10.0.1.42"
+                }
+              ]
+            },
+            {
+              "id": "alert-xyz-002",
+              "severity": "high",
+              "status": "open",
+              "message": "Lateral movement via SMB detected",
+              "createdAt": "2026-05-02T14:15:00Z",
+              "mitreTactic": "Lateral Movement",
+              "mitreTechnique": "T1021.002",
+              "assets": [
+                {
+                  "hostname": "server-prod-01",
+                  "ipAddress": "10.0.0.10"
+                }
+              ]
+            }
+          ],
+          "totalCount": 47
+        }
+      }
+    }
+  }
+}

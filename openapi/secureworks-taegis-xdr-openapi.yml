@@ -1,0 +1,316 @@
+openapi: 3.0.3
+info:
+  title: Secureworks Taegis XDR API
+  description: >-
+    The Secureworks Taegis XDR API provides programmatic access to the Taegis extended
+    detection and response platform via GraphQL. This OpenAPI document describes the
+    REST authentication endpoints and the primary GraphQL endpoint used to access alerts,
+    investigations, endpoint assets, identities, threat intelligence, collectors, connectors,
+    playbooks, audits, and users. Authentication uses OAuth2 client credentials flow
+    with bearer token authorization across multiple regions.
+  version: 1.0.0
+  contact:
+    url: https://docs.taegis.secureworks.com/apis/using_xdr_apis/
+servers:
+  - url: https://api.ctpx.secureworks.com
+    description: Taegis XDR API - US1 (Primary)
+  - url: https://api.delta.taegis.secureworks.com
+    description: Taegis XDR API - US2
+  - url: https://api.foxtrot.taegis.secureworks.com
+    description: Taegis XDR API - US3
+  - url: https://api.echo.taegis.secureworks.com
+    description: Taegis XDR API - EU1
+  - url: https://api.golf.taegis.secureworks.com
+    description: Taegis XDR API - EU2
+security:
+  - bearerAuth: []
+paths:
+  /auth/api/v2/auth/token:
+    post:
+      operationId: obtainAccessToken
+      summary: Obtain Access Token
+      description: >-
+        Exchange client credentials for an OAuth2 bearer access token using the client
+        credentials grant flow. The client_id and client_secret are provided via HTTP
+        Basic authentication. The returned access_token is used in subsequent API requests
+        via the Authorization Bearer header.
+      tags:
+        - Authentication
+      security:
+        - basicAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [grant_type]
+              properties:
+                grant_type:
+                  type: string
+                  enum: [client_credentials]
+                  description: OAuth2 grant type
+      responses:
+        '200':
+          description: Access token issued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          description: Invalid client credentials
+  /graphql:
+    post:
+      operationId: executeGraphQLQuery
+      summary: Execute GraphQL Query
+      description: >-
+        Execute a GraphQL query or mutation against the Taegis XDR platform. The
+        Taegis XDR API is primarily a GraphQL API supporting the following domains:
+        Alerts, Audits, Collectors, Connectors, Endpoint Assets, Identities, Investigations,
+        Playbooks, Threat Intelligence, BYOTI, Countermeasures, File Upload, Notifications,
+        Tenants, and Users.
+      tags:
+        - GraphQL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GraphQLRequest'
+      responses:
+        '200':
+          description: GraphQL response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GraphQLResponse'
+        '400':
+          description: Invalid GraphQL query
+        '401':
+          description: Unauthorized - invalid or expired bearer token
+        '429':
+          description: Rate limit exceeded
+  /assets/version:
+    get:
+      operationId: getServiceVersion
+      summary: Get Service Version
+      description: Check the current service version of the Taegis XDR API.
+      tags:
+        - System
+      security: []
+      responses:
+        '200':
+          description: Service version information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  version:
+                    type: string
+                  build:
+                    type: string
+                  environment:
+                    type: string
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 bearer access token from /auth/api/v2/auth/token
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth with client_id as username and client_secret as password
+  schemas:
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: Bearer token for API authentication
+        token_type:
+          type: string
+          enum: [Bearer]
+        expires_in:
+          type: integer
+          description: Token validity in seconds
+        expiry:
+          type: string
+          format: date-time
+          description: Absolute expiry timestamp
+    GraphQLRequest:
+      type: object
+      required: [query]
+      properties:
+        query:
+          type: string
+          description: GraphQL query or mutation string
+          example: |
+            query {
+              alerts(input: { limit: 10, offset: 0 }) {
+                alerts {
+                  id
+                  severity
+                  status
+                  message
+                  createdAt
+                }
+                totalCount
+              }
+            }
+        variables:
+          type: object
+          description: GraphQL variables for parameterized queries
+          additionalProperties: true
+        operationName:
+          type: string
+          description: Name of the GraphQL operation (for multi-operation documents)
+    GraphQLResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          description: GraphQL response data (shape varies by query)
+          additionalProperties: true
+        errors:
+          type: array
+          description: GraphQL errors if any
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              locations:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    line:
+                      type: integer
+                    column:
+                      type: integer
+              path:
+                type: array
+                items:
+                  type: string
+              extensions:
+                type: object
+    Alert:
+      type: object
+      description: Taegis XDR alert (returned via GraphQL)
+      properties:
+        id:
+          type: string
+          description: Alert unique identifier
+        severity:
+          type: string
+          enum: [critical, high, medium, low, informational]
+        status:
+          type: string
+          enum: [open, in_progress, closed, suppressed]
+        message:
+          type: string
+        description:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        mitreTactic:
+          type: string
+        mitreTechnique:
+          type: string
+        assets:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              hostname:
+                type: string
+              ipAddress:
+                type: string
+    Investigation:
+      type: object
+      description: Taegis XDR investigation (returned via GraphQL)
+      properties:
+        id:
+          type: string
+        shortId:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [open, active, closed, suspended]
+        priority:
+          type: string
+          enum: [critical, high, medium, low]
+        assignee:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        alerts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Alert'
+    EndpointAsset:
+      type: object
+      description: Endpoint asset record (returned via GraphQL)
+      properties:
+        id:
+          type: string
+        sensorId:
+          type: string
+        hostname:
+          type: string
+        ipAddresses:
+          type: array
+          items:
+            type: string
+        operatingSystem:
+          type: string
+        agentVersion:
+          type: string
+        status:
+          type: string
+          enum: [active, inactive, isolated]
+        lastSeen:
+          type: string
+          format: date-time
+    ThreatIntelligence:
+      type: object
+      description: Threat intelligence indicator (returned via GraphQL)
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [ip, domain, url, hash, email]
+        value:
+          type: string
+        confidence:
+          type: string
+          enum: [high, medium, low]
+        malicious:
+          type: boolean
+        tags:
+          type: array
+          items:
+            type: string
+        firstSeen:
+          type: string
+          format: date-time
+        lastSeen:
+          type: string
+          format: date-time

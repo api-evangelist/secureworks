@@ -1,0 +1,24 @@
+{
+  "name": "Secureworks Taegis Investigation Structure",
+  "description": "Structural documentation for a Taegis XDR security investigation",
+  "properties": {
+    "id": { "type": "string", "description": "Unique investigation identifier" },
+    "shortId": { "type": "string", "description": "Human-readable short investigation ID" },
+    "title": { "type": "string", "description": "Investigation title" },
+    "description": { "type": "string", "description": "Investigation description and findings" },
+    "status": { "type": "string", "description": "Status: open, active, closed, suspended" },
+    "priority": { "type": "string", "description": "Priority: critical, high, medium, low" },
+    "assignee": { "type": "string", "description": "Assigned analyst identifier" },
+    "createdAt": { "type": "string", "description": "Creation timestamp (ISO 8601)" },
+    "updatedAt": { "type": "string", "description": "Last update timestamp (ISO 8601)" },
+    "alerts": {
+      "type": "array",
+      "description": "Associated security alerts",
+      "items": {
+        "id": { "type": "string" },
+        "severity": { "type": "string" },
+        "message": { "type": "string" }
+      }
+    }
+  }
+}

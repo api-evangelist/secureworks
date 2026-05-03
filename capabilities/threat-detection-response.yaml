@@ -1,0 +1,158 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Secureworks Taegis Threat Detection and Response"
+  description: >-
+    Unified threat detection and response capability for the Secureworks Taegis XDR
+    platform. Enables SOC analysts and security engineers to query alerts, manage
+    investigations, monitor endpoint assets, and enrich findings with threat intelligence
+    across the entire Taegis security telemetry pipeline.
+  tags:
+    - XDR
+    - Threat Detection
+    - Incident Response
+    - Security Operations
+    - Cybersecurity
+    - MDR
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      TAEGIS_CLIENT_ID: TAEGIS_CLIENT_ID
+      TAEGIS_CLIENT_SECRET: TAEGIS_CLIENT_SECRET
+
+capability:
+  consumes:
+    - import: taegis-xdr
+      location: ./shared/taegis-xdr.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: threat-detection-api
+      description: "Unified REST API for Secureworks Taegis threat detection and response."
+      resources:
+        - path: /v1/alerts
+          name: alerts
+          description: "Security alert queries"
+          operations:
+            - method: POST
+              name: query-alerts
+              description: "Query security alerts with GraphQL filters"
+              call: "taegis-xdr.query-alerts"
+              with:
+                query: "rest.query"
+                variables: "rest.variables"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/investigations
+          name: investigations
+          description: "Investigation management"
+          operations:
+            - method: POST
+              name: query-investigations
+              description: "Query security investigations"
+              call: "taegis-xdr.query-investigations"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/assets
+          name: endpoint-assets
+          description: "Endpoint asset inventory"
+          operations:
+            - method: POST
+              name: query-endpoint-assets
+              description: "Query endpoint assets and agents"
+              call: "taegis-xdr.query-endpoint-assets"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/threat-intelligence
+          name: threat-intelligence
+          description: "Threat intelligence indicators"
+          operations:
+            - method: POST
+              name: query-threat-intelligence
+              description: "Query threat intelligence data"
+              call: "taegis-xdr.query-threat-intelligence"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: threat-detection-mcp
+      transport: http
+      description: "MCP server for AI-assisted threat detection and response with Secureworks Taegis XDR."
+      tools:
+        - name: query-xdr-alerts
+          description: "Query security alerts from Taegis XDR including severity, status, MITRE technique, and affected assets"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "taegis-xdr.query-alerts"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: query-investigations
+          description: "Query active and closed security investigations in Taegis XDR including priority, status, and assigned alerts"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "taegis-xdr.query-investigations"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-investigation
+          description: "Create a new security investigation in Taegis XDR to track and coordinate incident response"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "taegis-xdr.mutate-investigation"
+          with:
+            mutation: "tools.mutation"
+            variables: "tools.variables"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: query-endpoint-assets
+          description: "Query the endpoint asset inventory including hostname, IP addresses, OS, agent version, and isolation status"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "taegis-xdr.query-endpoint-assets"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: query-threat-intelligence
+          description: "Query threat intelligence indicators (IPs, domains, URLs, file hashes) for malicious activity assessment"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "taegis-xdr.query-threat-intelligence"
+          with:
+            query: "tools.query"
+            variables: "tools.variables"
+          outputParameters:
+            - type: object
+              mapping: "$."

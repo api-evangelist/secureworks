@@ -1,0 +1,46 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "taegis": "https://taegis.secureworks.com/vocab/",
+    "security": "https://w3id.org/security#",
+    "Alert": "taegis:Alert",
+    "Investigation": "taegis:Investigation",
+    "EndpointAsset": "taegis:EndpointAsset",
+    "ThreatIntelligence": "taegis:ThreatIntelligence",
+    "id": "@id",
+    "severity": "taegis:severity",
+    "status": "schema:status",
+    "message": "schema:description",
+    "description": "schema:description",
+    "createdAt": "schema:dateCreated",
+    "updatedAt": "schema:dateModified",
+    "mitreTactic": "taegis:mitreTactic",
+    "mitreTechnique": "taegis:mitreTechnique",
+    "assets": {
+      "@id": "taegis:affectedAssets",
+      "@container": "@set"
+    },
+    "title": "schema:name",
+    "priority": "taegis:priority",
+    "assignee": "schema:agent",
+    "alerts": {
+      "@id": "taegis:associatedAlerts",
+      "@container": "@set"
+    },
+    "hostname": "taegis:hostname",
+    "ipAddresses": {
+      "@id": "schema:ipAddressOfSubject",
+      "@container": "@set"
+    },
+    "operatingSystem": "schema:operatingSystem",
+    "agentVersion": "taegis:agentVersion",
+    "type": "schema:additionalType",
+    "value": "schema:value",
+    "confidence": "taegis:confidence",
+    "malicious": "taegis:malicious",
+    "firstSeen": "schema:startDate",
+    "lastSeen": "schema:endDate"
+  }
+}

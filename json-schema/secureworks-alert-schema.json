@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/secureworks/refs/heads/main/json-schema/secureworks-alert-schema.json",
+  "title": "Secureworks Taegis Alert",
+  "description": "A security alert from the Secureworks Taegis XDR platform including severity, status, MITRE mapping, and affected assets.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique alert identifier"
+    },
+    "severity": {
+      "type": "string",
+      "description": "Alert severity level",
+      "enum": ["critical", "high", "medium", "low", "informational"]
+    },
+    "status": {
+      "type": "string",
+      "description": "Alert status",
+      "enum": ["open", "in_progress", "closed", "suppressed"]
+    },
+    "message": {
+      "type": "string",
+      "description": "Alert message summary"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed alert description"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Alert creation timestamp"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    },
+    "mitreTactic": {
+      "type": "string",
+      "description": "MITRE ATT&CK tactic (e.g., Initial Access, Lateral Movement)"
+    },
+    "mitreTechnique": {
+      "type": "string",
+      "description": "MITRE ATT&CK technique ID (e.g., T1566)"
+    },
+    "assets": {
+      "type": "array",
+      "description": "Affected endpoint assets",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "hostname": { "type": "string" },
+          "ipAddress": { "type": "string" }
+        }
+      }
+    }
+  },
+  "required": ["id", "severity", "status", "message"]
+}
