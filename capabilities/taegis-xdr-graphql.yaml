@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Secureworks Taegis XDR API — GraphQL
+  description: 'Secureworks Taegis XDR API — GraphQL. 1 operations. Lead operation: Execute GraphQL Query. Self-contained
+    Naftiko capability covering one Secureworks business surface.'
+  tags:
+  - Secureworks
+  - GraphQL
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SECUREWORKS_API_KEY: SECUREWORKS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: taegis-xdr-graphql
+    baseUri: https://api.ctpx.secureworks.com
+    description: Secureworks Taegis XDR API — GraphQL business capability. Self-contained, no shared references.
+    resources:
+    - name: graphql
+      path: /graphql
+      operations:
+      - name: executegraphqlquery
+        method: POST
+        description: Execute GraphQL Query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SECUREWORKS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: taegis-xdr-graphql-rest
+    port: 8080
+    description: REST adapter for Secureworks Taegis XDR API — GraphQL. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/graphql
+      name: graphql
+      description: REST surface for graphql.
+      operations:
+      - method: POST
+        name: executegraphqlquery
+        description: Execute GraphQL Query
+        call: taegis-xdr-graphql.executegraphqlquery
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: taegis-xdr-graphql-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Secureworks Taegis XDR API — GraphQL. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: execute-graphql-query
+      description: Execute GraphQL Query
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: taegis-xdr-graphql.executegraphqlquery
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

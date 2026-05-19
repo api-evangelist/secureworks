@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Secureworks Taegis XDR API — System
+  description: 'Secureworks Taegis XDR API — System. 1 operations. Lead operation: Get Service Version. Self-contained Naftiko
+    capability covering one Secureworks business surface.'
+  tags:
+  - Secureworks
+  - System
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SECUREWORKS_API_KEY: SECUREWORKS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: taegis-xdr-system
+    baseUri: https://api.ctpx.secureworks.com
+    description: Secureworks Taegis XDR API — System business capability. Self-contained, no shared references.
+    resources:
+    - name: assets-version
+      path: /assets/version
+      operations:
+      - name: getserviceversion
+        method: GET
+        description: Get Service Version
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SECUREWORKS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: taegis-xdr-system-rest
+    port: 8080
+    description: REST adapter for Secureworks Taegis XDR API — System. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/assets/version
+      name: assets-version
+      description: REST surface for assets-version.
+      operations:
+      - method: GET
+        name: getserviceversion
+        description: Get Service Version
+        call: taegis-xdr-system.getserviceversion
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: taegis-xdr-system-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Secureworks Taegis XDR API — System. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-service-version
+      description: Get Service Version
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: taegis-xdr-system.getserviceversion
+      outputParameters:
+      - type: object
+        mapping: $.
