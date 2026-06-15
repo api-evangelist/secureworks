@@ -18,16 +18,14 @@ apis:
     type: Documentation
   - url: https://docs.taegis.secureworks.com/apis/api_authenticate/
     type: Authentication
-  - type: NaftikoCapability
-    url: capabilities/taegis-xdr-authentication.yaml
-  - type: NaftikoCapability
-    url: capabilities/taegis-xdr-graphql.yaml
-  - type: NaftikoCapability
-    url: capabilities/taegis-xdr-system.yaml
-  description: The Secureworks Taegis XDR API provides GraphQL-based programmatic access to the Taegis extended detection
-    and response platform. The API supports alerts, investigations, endpoint assets, identities, threat intelligence, collectors,
-    connectors, playbooks, and audit operations. Authentication uses OAuth2 client credentials flow with bearer token authorization.
-    The platform is available across multiple regions in the US and EU, with each region served by a dedicated API endpoint.
+  - url: graphql/secureworks-graphql.md
+    type: GraphQL
+  description: >-
+    The Secureworks Taegis XDR API provides GraphQL-based programmatic access to the Taegis extended detection and
+    response platform. The API supports alerts, investigations, endpoint assets, identities, threat intelligence,
+    collectors, connectors, playbooks, and audit operations. Authentication uses OAuth2 client credentials flow with
+    bearer token authorization. The platform is available across multiple regions in the US and EU, with each region
+    served by a dedicated API endpoint.
 name: Secureworks
 tags:
 - Cybersecurity
@@ -43,12 +41,13 @@ access: 3rd-Party
 created: '2026-05-02'
 modified: '2026-05-19'
 position: Consuming
-description: Secureworks is a cybersecurity company that provides the Taegis XDR (Extended Detection and Response) platform,
-  offering threat detection, investigation, and response capabilities backed by 20 years of security intelligence. Taegis
-  ingests and correlates telemetry across endpoints, network, cloud, and identity sources to detect threats and automate response
-  workflows. The Taegis XDR API exposes GraphQL APIs for alerts, investigations, endpoint assets, identities, threat intelligence,
-  connectors, collectors, playbooks, and users, with OAuth2 client credentials authentication and multi-region deployment
-  support.
+description: >-
+  Secureworks is a cybersecurity company that provides the Taegis XDR (Extended Detection and Response) platform,
+  offering threat detection, investigation, and response capabilities backed by 20 years of security intelligence.
+  Taegis ingests and correlates telemetry across endpoints, network, cloud, and identity sources to detect threats and
+  automate response workflows. The Taegis XDR API exposes GraphQL APIs for alerts, investigations, endpoint assets,
+  identities, threat intelligence, connectors, collectors, playbooks, and users, with OAuth2 client credentials
+  authentication and multi-region deployment support.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Secureworks Taegis XDR API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Obtain Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ctpx.secureworks.com/auth/api/v2/auth/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Exchange client credentials for an OAuth2 bearer access token using the client credentials grant flow. The client_id and client_secret are provided via HTTP Basic authentication. The returned access_token is used in subsequent API requests via the Authorization Bearer header."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "GraphQL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute GraphQL Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ctpx.secureworks.com/graphql",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a GraphQL query or mutation against the Taegis XDR platform. The Taegis XDR API is primarily a GraphQL API supporting the following domains: Alerts, Audits, Collectors, Connectors, Endpoint Assets, Identities, Investigations, Playbooks, Threat Intelligence, BYOTI, Countermeasures, File Upload, Notifications, Tenants, and Users."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Service Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ctpx.secureworks.com/assets/version"
+          },
+          "docs": "Check the current service version of the Taegis XDR API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
