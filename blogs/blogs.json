@@ -2,14 +2,13 @@
   "repo": "secureworks",
   "feeds": [
     {
-      "source": "https://www.sophos.com/en-us/news",
-      "error": "timeout"
-    },
-    {
       "source": "https://www.secureworks.com/blog/show-me-the-apis",
-      "error": "timeout"
+      "feed_url": "",
+      "saved": 0,
+      "method": "agent-scrape"
     }
   ],
-  "fetched": "2026-06-14T20:42:17Z",
-  "post_count": 0
+  "fetched": "2026-06-27T13:08:49Z",
+  "post_count": 2,
+  "agent_pulled": "2026-06-27"
 }

@@ -69,7 +69,7 @@ common:
   type: GitHubOrganization
 - name: Taegis Python SDK
   url: https://github.com/secureworks/taegis-sdk-python
-  type: SDK
+  type: SDKs
 - name: VDR API Documentation
   url: https://us2.vdr.secureworks.com/api/v2/spec
   type: Documentation
@@ -83,7 +83,7 @@ common:
 - url: json-ld/secureworks-context.jsonld
   type: JSONLDContext
 - url: examples/secureworks-query-alerts-example.json
-  type: Example
+  type: Examples
 - url: rules/secureworks-rules.yml
   type: SpectralRuleset
 - url: vocabulary/secureworks-vocabulary.yml
