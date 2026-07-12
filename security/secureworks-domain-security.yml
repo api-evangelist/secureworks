@@ -1,0 +1,33 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.secureworks.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  8 07:34:11 2026 GMT
+  hsts: null
+- host: docs.taegis.secureworks.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan 23 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 63072000
+- host: api.ctpx.secureworks.com
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Nov  8 23:59:59 2026 GMT
+  hsts: null
+domains:
+- domain: secureworks.com
+  dnssec: false
+  caa:
+  - 0 issue "sectigo.com"
+  - 0 issue "amazon.com"
+  - 0 issue "digicert.com"
+  - 0 issue "globalsign.com"
+  - 0 issue "godaddy.com"
+  - 0 issue "letsencrypt.org"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

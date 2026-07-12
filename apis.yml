@@ -53,6 +53,10 @@ maintainers:
   email: kin@apievangelist.com
 specificationVersion: '0.19'
 common:
+- type: DomainSecurity
+  url: security/secureworks-domain-security.yml
+- type: Authentication
+  url: authentication/secureworks-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/secureworks
 - name: Website

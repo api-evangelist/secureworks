@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/secureworks-taegis-xdr-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: OAuth2 bearer access token from /auth/api/v2/auth/token
+  sources:
+  - openapi/secureworks-taegis-xdr-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic auth with client_id as username and client_secret as password
+  sources:
+  - openapi/secureworks-taegis-xdr-openapi.yml
