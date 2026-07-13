@@ -3,12 +3,10 @@
   "feeds": [
     {
       "source": "https://www.secureworks.com/blog/show-me-the-apis",
-      "feed_url": "",
-      "saved": 0,
-      "method": "agent-scrape"
+      "error": "TimeoutError"
     }
   ],
-  "fetched": "2026-06-27T13:08:49Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 2,
-  "agent_pulled": "2026-06-27"
+  "note": "blog URL now 301-redirects to sophos.com/en-us/blog; source feed no longer belongs to secureworks.com"
 }
