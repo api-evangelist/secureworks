@@ -1,0 +1,106 @@
+openapi: 3.0.3
+info:
+  title: Secureworks Taegis XDR Authentication GraphQL API
+  description: The Secureworks Taegis XDR API provides programmatic access to the Taegis extended detection and response platform via GraphQL. This OpenAPI document describes the REST authentication endpoints and the primary GraphQL endpoint used to access alerts, investigations, endpoint assets, identities, threat intelligence, collectors, connectors, playbooks, audits, and users. Authentication uses OAuth2 client credentials flow with bearer token authorization across multiple regions.
+  version: 1.0.0
+  contact:
+    url: https://docs.taegis.secureworks.com/apis/using_xdr_apis/
+servers:
+- url: https://api.ctpx.secureworks.com
+  description: Taegis XDR API - US1 (Primary)
+- url: https://api.delta.taegis.secureworks.com
+  description: Taegis XDR API - US2
+- url: https://api.foxtrot.taegis.secureworks.com
+  description: Taegis XDR API - US3
+- url: https://api.echo.taegis.secureworks.com
+  description: Taegis XDR API - EU1
+- url: https://api.golf.taegis.secureworks.com
+  description: Taegis XDR API - EU2
+security:
+- bearerAuth: []
+tags:
+- name: GraphQL
+paths:
+  /graphql:
+    post:
+      operationId: executeGraphQLQuery
+      summary: Execute GraphQL Query
+      description: 'Execute a GraphQL query or mutation against the Taegis XDR platform. The Taegis XDR API is primarily a GraphQL API supporting the following domains: Alerts, Audits, Collectors, Connectors, Endpoint Assets, Identities, Investigations, Playbooks, Threat Intelligence, BYOTI, Countermeasures, File Upload, Notifications, Tenants, and Users.'
+      tags:
+      - GraphQL
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GraphQLRequest'
+      responses:
+        '200':
+          description: GraphQL response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GraphQLResponse'
+        '400':
+          description: Invalid GraphQL query
+        '401':
+          description: Unauthorized - invalid or expired bearer token
+        '429':
+          description: Rate limit exceeded
+components:
+  schemas:
+    GraphQLRequest:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: GraphQL query or mutation string
+          example: "query {\n  alerts(input: { limit: 10, offset: 0 }) {\n    alerts {\n      id\n      severity\n      status\n      message\n      createdAt\n    }\n    totalCount\n  }\n}\n"
+        variables:
+          type: object
+          description: GraphQL variables for parameterized queries
+          additionalProperties: true
+        operationName:
+          type: string
+          description: Name of the GraphQL operation (for multi-operation documents)
+    GraphQLResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          description: GraphQL response data (shape varies by query)
+          additionalProperties: true
+        errors:
+          type: array
+          description: GraphQL errors if any
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+              locations:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    line:
+                      type: integer
+                    column:
+                      type: integer
+              path:
+                type: array
+                items:
+                  type: string
+              extensions:
+                type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 bearer access token from /auth/api/v2/auth/token
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth with client_id as username and client_secret as password

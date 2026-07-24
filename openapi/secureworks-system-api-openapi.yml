@@ -1,0 +1,55 @@
+openapi: 3.0.3
+info:
+  title: Secureworks Taegis XDR Authentication System API
+  description: The Secureworks Taegis XDR API provides programmatic access to the Taegis extended detection and response platform via GraphQL. This OpenAPI document describes the REST authentication endpoints and the primary GraphQL endpoint used to access alerts, investigations, endpoint assets, identities, threat intelligence, collectors, connectors, playbooks, audits, and users. Authentication uses OAuth2 client credentials flow with bearer token authorization across multiple regions.
+  version: 1.0.0
+  contact:
+    url: https://docs.taegis.secureworks.com/apis/using_xdr_apis/
+servers:
+- url: https://api.ctpx.secureworks.com
+  description: Taegis XDR API - US1 (Primary)
+- url: https://api.delta.taegis.secureworks.com
+  description: Taegis XDR API - US2
+- url: https://api.foxtrot.taegis.secureworks.com
+  description: Taegis XDR API - US3
+- url: https://api.echo.taegis.secureworks.com
+  description: Taegis XDR API - EU1
+- url: https://api.golf.taegis.secureworks.com
+  description: Taegis XDR API - EU2
+security:
+- bearerAuth: []
+tags:
+- name: System
+paths:
+  /assets/version:
+    get:
+      operationId: getServiceVersion
+      summary: Get Service Version
+      description: Check the current service version of the Taegis XDR API.
+      tags:
+      - System
+      security: []
+      responses:
+        '200':
+          description: Service version information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  version:
+                    type: string
+                  build:
+                    type: string
+                  environment:
+                    type: string
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: OAuth2 bearer access token from /auth/api/v2/auth/token
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic auth with client_id as username and client_secret as password
