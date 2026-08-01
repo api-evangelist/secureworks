@@ -1,0 +1,18 @@
+{
+  "provider": "secureworks",
+  "sources": [
+    "secureworks-authentication-api-openapi.yml",
+    "secureworks-graphql-api-openapi.yml",
+    "secureworks-system-api-openapi.yml"
+  ],
+  "outputs": [
+    "secureworks-authentication-api-openapi.yml",
+    "secureworks-graphql-api-openapi.yml",
+    "secureworks-system-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
