@@ -1,0 +1,281 @@
+{
+  "item": [
+    {
+      "id": "ae5c24c7-58f4-4bd7-b7c2-e84ba4cc4c63",
+      "name": "GraphQL",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f857478-0c69-402b-9b12-f5a4288e6a65",
+          "name": "Execute GraphQL Query",
+          "request": {
+            "name": "Execute GraphQL Query",
+            "description": {
+              "content": "Execute a GraphQL query or mutation against the Taegis XDR platform. The Taegis XDR API is primarily a GraphQL API supporting the following domains: Alerts, Audits, Collectors, Connectors, Endpoint Assets, Identities, Investigations, Playbooks, Threat Intelligence, BYOTI, Countermeasures, File Upload, Notifications, Tenants, and Users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "graphql"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"variables\": {\n    \"key_0\": 6909,\n    \"key_1\": 1939\n  },\n  \"operationName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b5eae8fd-3aac-49a0-a944-2de96f90bbad",
+              "name": "GraphQL response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query {\\n  alerts(input: { limit: 10, offset: 0 }) {\\n    alerts {\\n      id\\n      severity\\n      status\\n      message\\n      createdAt\\n    }\\n    totalCount\\n  }\\n}\\n\",\n  \"variables\": {\n    \"key_0\": 1905,\n    \"key_1\": false\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": 2730,\n    \"key_1\": 7995.027144562574,\n    \"key_2\": 6856\n  },\n  \"errors\": [\n    {\n      \"message\": \"string\",\n      \"locations\": [\n        {\n          \"line\": 6145,\n          \"column\": 8655\n        },\n        {\n          \"line\": 6325,\n          \"column\": 5108\n        }\n      ],\n      \"path\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extensions\": {}\n    },\n    {\n      \"message\": \"string\",\n      \"locations\": [\n        {\n          \"line\": 9432,\n          \"column\": 226\n        },\n        {\n          \"line\": 6589,\n          \"column\": 7034\n        }\n      ],\n      \"path\": [\n        \"string\",\n        \"string\"\n      ],\n      \"extensions\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "803096df-759e-44e7-9bbe-31717170b6a9",
+              "name": "Invalid GraphQL query",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query {\\n  alerts(input: { limit: 10, offset: 0 }) {\\n    alerts {\\n      id\\n      severity\\n      status\\n      message\\n      createdAt\\n    }\\n    totalCount\\n  }\\n}\\n\",\n  \"variables\": {\n    \"key_0\": 1905,\n    \"key_1\": false\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2653a7fe-33e7-48ae-a697-24738964d970",
+              "name": "Unauthorized - invalid or expired bearer token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query {\\n  alerts(input: { limit: 10, offset: 0 }) {\\n    alerts {\\n      id\\n      severity\\n      status\\n      message\\n      createdAt\\n    }\\n    totalCount\\n  }\\n}\\n\",\n  \"variables\": {\n    \"key_0\": 1905,\n    \"key_1\": false\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8819932b-e4d5-4fa5-acfe-c072ebfba7c0",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "graphql"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"query {\\n  alerts(input: { limit: 10, offset: 0 }) {\\n    alerts {\\n      id\\n      severity\\n      status\\n      message\\n      createdAt\\n    }\\n    totalCount\\n  }\\n}\\n\",\n  \"variables\": {\n    \"key_0\": 1905,\n    \"key_1\": false\n  },\n  \"operationName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ctpx.secureworks.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0733da80-f16a-4704-bf5e-5c0d34c4593a",
+    "name": "Secureworks Taegis XDR Authentication GraphQL API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Secureworks Taegis XDR API provides programmatic access to the Taegis extended detection and response platform via GraphQL. This OpenAPI document describes the REST authentication endpoints and the primary GraphQL endpoint used to access alerts, investigations, endpoint assets, identities, threat intelligence, collectors, connectors, playbooks, audits, and users. Authentication uses OAuth2 client credentials flow with bearer token authorization across multiple regions.",
+      "type": "text/plain"
+    }
+  }
+}

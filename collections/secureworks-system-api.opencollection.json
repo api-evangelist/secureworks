@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Secureworks Taegis XDR Authentication System API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "System",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Service Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.ctpx.secureworks.com/assets/version"
+          },
+          "docs": "Check the current service version of the Taegis XDR API."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

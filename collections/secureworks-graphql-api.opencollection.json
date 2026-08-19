@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Secureworks Taegis XDR Authentication GraphQL API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GraphQL",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Execute GraphQL Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.ctpx.secureworks.com/graphql",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Execute a GraphQL query or mutation against the Taegis XDR platform. The Taegis XDR API is primarily a GraphQL API supporting the following domains: Alerts, Audits, Collectors, Connectors, Endpoint Assets, Identities, Investigations, Playbooks, Threat Intelligence, BYOTI, Countermeasures, File Upload, Notifications, Tenants, and Users."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

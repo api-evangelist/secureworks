@@ -1,0 +1,121 @@
+{
+  "item": [
+    {
+      "id": "6473df05-8d32-4563-9eca-a5fda7d75ead",
+      "name": "System",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3941df12-bb2d-47b6-bfd3-b29e615f9dd2",
+          "name": "Get Service Version",
+          "request": {
+            "name": "Get Service Version",
+            "description": {
+              "content": "Check the current service version of the Taegis XDR API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assets",
+                "version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "065d501c-3859-4f25-acd9-8a1975a0f685",
+              "name": "Service version information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    "version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"string\",\n  \"build\": \"string\",\n  \"environment\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.ctpx.secureworks.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5b5240cb-a61c-40bd-a1f2-23a3705efc4b",
+    "name": "Secureworks Taegis XDR Authentication System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Secureworks Taegis XDR API provides programmatic access to the Taegis extended detection and response platform via GraphQL. This OpenAPI document describes the REST authentication endpoints and the primary GraphQL endpoint used to access alerts, investigations, endpoint assets, identities, threat intelligence, collectors, connectors, playbooks, audits, and users. Authentication uses OAuth2 client credentials flow with bearer token authorization across multiple regions.",
+      "type": "text/plain"
+    }
+  }
+}
