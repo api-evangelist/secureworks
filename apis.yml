@@ -17,22 +17,6 @@ apis:
     url: https://docs.taegis.secureworks.com/apis/api_authenticate/
   - type: GraphQL
     url: graphql/secureworks-graphql.md
-- aid: secureworks:secureworks-graphql-api
-  name: Secureworks GraphQL API
-  description: The GraphQL API from Secureworks — 1 operation(s) for graphql.
-  humanURL: https://docs.taegis.secureworks.com/apis/using_xdr_apis/
-  baseURL: https://api.ctpx.secureworks.com
-  tags:
-  - GraphQL
-  properties:
-  - type: OpenAPI
-    url: openapi/secureworks-graphql-api-openapi.yml
-  - type: Documentation
-    url: https://docs.taegis.secureworks.com/apis/using_xdr_apis/
-  - type: Authentication
-    url: https://docs.taegis.secureworks.com/apis/api_authenticate/
-  - type: GraphQL
-    url: graphql/secureworks-graphql.md
 - aid: secureworks:secureworks-system-api
   name: Secureworks System API
   description: The System API from Secureworks — 1 operation(s) for system.
@@ -43,6 +27,22 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/secureworks-system-api-openapi.yml
+  - type: Documentation
+    url: https://docs.taegis.secureworks.com/apis/using_xdr_apis/
+  - type: Authentication
+    url: https://docs.taegis.secureworks.com/apis/api_authenticate/
+  - type: GraphQL
+    url: graphql/secureworks-graphql.md
+- aid: secureworks:secureworks-graph-ql-api
+  name: Secureworks Graph QL API
+  description: The Graph QL API from Secureworks — 1 operation(s) for graph ql.
+  humanURL: https://docs.taegis.secureworks.com/apis/using_xdr_apis/
+  baseURL: https://api.ctpx.secureworks.com
+  tags:
+  - Graph QL
+  properties:
+  - type: OpenAPI
+    url: openapi/secureworks-graph-ql-api-openapi.yml
   - type: Documentation
     url: https://docs.taegis.secureworks.com/apis/using_xdr_apis/
   - type: Authentication
