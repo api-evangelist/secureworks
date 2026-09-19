@@ -39,6 +39,8 @@ apis:
   humanURL: https://docs.taegis.secureworks.com/apis/using_xdr_apis/
   baseURL: https://api.ctpx.secureworks.com
   tags:
+  - GraphQL
+  tags_raw:
   - Graph QL
   properties:
   - type: OpenAPI
