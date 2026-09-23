@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Secureworks Taegis XDR Authentication API
   description: The Secureworks Taegis XDR API provides programmatic access to the Taegis extended detection and response platform via GraphQL. This OpenAPI document describes the REST authentication endpoints and the primary GraphQL endpoint used to access alerts, investigations, endpoint assets, identities, threat intelligence, collectors, connectors, playbooks, audits, and users. Authentication uses OAuth2 client credentials flow with bearer token authorization across multiple regions.
