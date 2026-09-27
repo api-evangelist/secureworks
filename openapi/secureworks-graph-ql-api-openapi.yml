@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Secureworks Taegis XDR Graph QL API
+  title: Secureworks Taegis XDR GraphQL API
   description: The Secureworks Taegis XDR API provides programmatic access to the Taegis extended detection and response platform via GraphQL. This OpenAPI document describes the REST authentication endpoints and the primary GraphQL endpoint used to access alerts, investigations, endpoint assets, identities, threat intelligence, collectors, connectors, playbooks, audits, and users. Authentication uses OAuth2 client credentials flow with bearer token authorization across multiple regions.
   version: 1.0.0
   contact:
@@ -49,6 +49,22 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
+    GraphQLRequest:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: GraphQL query or mutation string
+          example: "query {\n  alerts(input: { limit: 10, offset: 0 }) {\n    alerts {\n      id\n      severity\n      status\n      message\n      createdAt\n    }\n    totalCount\n  }\n}\n"
+        variables:
+          type: object
+          description: GraphQL variables for parameterized queries
+          additionalProperties: true
+        operationName:
+          type: string
+          description: Name of the GraphQL operation (for multi-operation documents)
     GraphQLResponse:
       type: object
       properties:
@@ -79,22 +95,6 @@ components:
                   type: string
               extensions:
                 type: object
-    GraphQLRequest:
-      type: object
-      required:
-      - query
-      properties:
-        query:
-          type: string
-          description: GraphQL query or mutation string
-          example: "query {\n  alerts(input: { limit: 10, offset: 0 }) {\n    alerts {\n      id\n      severity\n      status\n      message\n      createdAt\n    }\n    totalCount\n  }\n}\n"
-        variables:
-          type: object
-          description: GraphQL variables for parameterized queries
-          additionalProperties: true
-        operationName:
-          type: string
-          description: Name of the GraphQL operation (for multi-operation documents)
   securitySchemes:
     bearerAuth:
       type: http
