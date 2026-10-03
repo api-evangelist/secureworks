@@ -49,22 +49,6 @@ paths:
           description: Rate limit exceeded
 components:
   schemas:
-    GraphQLRequest:
-      type: object
-      required:
-      - query
-      properties:
-        query:
-          type: string
-          description: GraphQL query or mutation string
-          example: "query {\n  alerts(input: { limit: 10, offset: 0 }) {\n    alerts {\n      id\n      severity\n      status\n      message\n      createdAt\n    }\n    totalCount\n  }\n}\n"
-        variables:
-          type: object
-          description: GraphQL variables for parameterized queries
-          additionalProperties: true
-        operationName:
-          type: string
-          description: Name of the GraphQL operation (for multi-operation documents)
     GraphQLResponse:
       type: object
       properties:
@@ -95,6 +79,22 @@ components:
                   type: string
               extensions:
                 type: object
+    GraphQLRequest:
+      type: object
+      required:
+      - query
+      properties:
+        query:
+          type: string
+          description: GraphQL query or mutation string
+          example: "query {\n  alerts(input: { limit: 10, offset: 0 }) {\n    alerts {\n      id\n      severity\n      status\n      message\n      createdAt\n    }\n    totalCount\n  }\n}\n"
+        variables:
+          type: object
+          description: GraphQL variables for parameterized queries
+          additionalProperties: true
+        operationName:
+          type: string
+          description: Name of the GraphQL operation (for multi-operation documents)
   securitySchemes:
     bearerAuth:
       type: http
