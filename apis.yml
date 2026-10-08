@@ -101,6 +101,12 @@ maintainers:
   email: kin@apievangelist.com
 specificationVersion: '0.23'
 common:
+- type: Plans
+  url: plans/secureworks-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/secureworks-rate-limits.yml
+- type: FinOps
+  url: finops/secureworks-finops.yml
 - type: AgenticAccess
   url: agentic-access/secureworks-agentic-access.yml
 - type: DomainSecurity
