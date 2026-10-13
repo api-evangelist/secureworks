@@ -1,0 +1,23 @@
+generated: '2026-10-13'
+method: searched
+checked:
+- https://aws.amazon.com/marketplace/
+marketplace_apps: []
+edges:
+- partner_name: AWS Marketplace
+  partner: amazon-web-services
+  partner_match: aggregator
+  type: marketplace
+  marketplace: aws-marketplace
+  channel: distribution
+  relationship: platform-app
+  direction: provider-built
+  evidence: https://aws.amazon.com/marketplace/seller-profile?id=ce994611-f4fb-4ff5-982a-1542bcfa0906
+  listing_count: 3
+  apps:
+  - Secureworks Taegis XDR
+  - Secureworks Taegis VDR
+  - Secureworks Taegis NDR
+  seller_name: Secureworks
+  detected_by: sweep-cloud-marketplaces.py
+  detected: '2026-10-13'
