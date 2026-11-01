@@ -1,4 +1,4 @@
-# Secureworks (secureworks)
+# Secureworks
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,72 +66,163 @@
 
 Secureworks is a cybersecurity company that provides the Taegis XDR (Extended Detection and Response) platform, offering threat detection, investigation, and response capabilities backed by 20 years of security intelligence. Taegis ingests and correlates telemetry across endpoints, network, cloud, and identity sources to detect threats and automate response workflows. The Taegis XDR API exposes GraphQL APIs for alerts, investigations, endpoint assets, identities, threat intelligence, connectors, collectors, playbooks, and users, with OAuth2 client credentials authentication and multi-region deployment support.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/secureworks/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/secureworks/refs/heads/main/apis.yml)
+**Areas:** Cybersecurity · XDR · Threat Detection · Security Operations · Incident Response · MDR · Threat Intelligence
 
-## Scope
+## Secureworks on APIs.io
 
-- **Type:** Index
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Secureworks is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/secureworks/](https://apis.io/providers/secureworks/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Cybersecurity
-- XDR
-- Threat Detection
-- Security Operations
-- Incident Response
-- MDR
-- Threat Intelligence
+- [Secureworks Authentication API](https://apis.io/apis/secureworks/secureworks-authentication-api/) — The Authentication API from Secureworks — 1 operation(s) for authentication.
+- [Secureworks System API](https://apis.io/apis/secureworks/secureworks-system-api/) — The System API from Secureworks — 1 operation(s) for system.
+- [Secureworks Graph QL API](https://apis.io/apis/secureworks/secureworks-graph-ql-api/) — The Graph QL API from Secureworks — 1 operation(s) for graph ql.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-02
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### GraphQL (1)
 
-### Secureworks Taegis XDR API
+GraphQL schemas.
 
-The Secureworks Taegis XDR API provides GraphQL-based programmatic access to the Taegis extended detection and response platform. The API supports alerts, investigations, endpoint assets, identities, threat intelligence, collectors, connectors, playbooks, and audit operations. Authentication uses OAuth2 client credentials flow with bearer token authorization. The platform is available across multiple regions in the US and EU, with each region served by a dedicated API endpoint.
+- [Secureworks GraphQL API](https://apis.io/graphqls/secureworks/secureworks-graphql/)
 
-- **Human URL:** [https://docs.taegis.secureworks.com/apis/using_xdr_apis/](https://docs.taegis.secureworks.com/apis/using_xdr_apis/)
-- **Base URL:** `https://api.ctpx.secureworks.com`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- XDR
-- Threat Detection
-- Security Operations
-- GraphQL
-- Incident Response
+- [Secureworks Agentic Access](https://apis.io/agentic-access/secureworks/secureworks-agentic-access/)
 
-#### Properties
+#### JSON Schema (1)
 
-- [OpenAPI](openapi/secureworks-taegis-xdr-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/secureworks-taegis-xdr.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/secureworks-taegis-xdr.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Documentation](https://docs.taegis.secureworks.com/apis/using_xdr_apis/)
-- [Authentication](https://docs.taegis.secureworks.com/apis/api_authenticate/)
+The data models the API reads and writes.
 
-## Common Properties
+- [Secureworks Taegis Alert](https://apis.io/schemas/secureworks/secureworks-alert/)
 
-- [LinkedIn](https://www.linkedin.com/company/secureworks)
+#### JSON Structure (1)
+
+Data models expressed in JSON Structure.
+
+- [Secureworks Investigation Structure](https://apis.io/json-structure/secureworks/secureworks-investigation-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Secureworks Context](https://apis.io/jsonld/secureworks/secureworks-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Secureworks Vocabulary](https://apis.io/vocabularies/secureworks/secureworks-vocabulary/)
+
+#### Examples (1)
+
+Example requests and responses.
+
+- [Secureworks Query Alerts Example](https://apis.io/examples/secureworks/secureworks-query-alerts-example/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [Secureworks Taegis XDR Authentication API](https://apis.io/collections/secureworks/open-secureworks-authentication-api/)
+- [Secureworks Taegis XDR Authentication GraphQL API](https://apis.io/collections/secureworks/open-secureworks-graphql-api/)
+- [Secureworks Taegis XDR Authentication System API](https://apis.io/collections/secureworks/open-secureworks-system-api/)
+- [Secureworks Taegis XDR API](https://apis.io/collections/secureworks/open-secureworks-taegis-xdr/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Secureworks — jsonschema rules](https://apis.io/rules/secureworks/secureworks-jsonschema-spectral-rules/)
+- [Secureworks API Rules](https://apis.io/rules/secureworks/secureworks-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Secureworks Authentication](https://apis.io/security/secureworks/secureworks-authentication/)
+- [Secureworks Domain Security](https://apis.io/security/secureworks/secureworks-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Secureworks Plans Pricing](https://apis.io/plans/secureworks/secureworks-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Secureworks Rate Limits](https://apis.io/rate-limits/secureworks/secureworks-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Secureworks Finops](https://apis.io/finops/secureworks/secureworks-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.secureworks.com)
 - [Documentation](https://docs.taegis.secureworks.com/apis/using_xdr_apis/)
-- [Authentication](https://docs.taegis.secureworks.com/apis/api_authenticate/)
-- [GitHub Organization](https://github.com/secureworks)
-- [SDK](https://github.com/secureworks/taegis-sdk-python)
-- [Documentation](https://us2.vdr.secureworks.com/api/v2/spec)
 - [Blog](https://www.secureworks.com/blog/show-me-the-apis)
-- [JSON Schema](json-schema/secureworks-alert-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/secureworks-investigation-structure.json)
-- [J S O N L D Context](json-ld/secureworks-context.jsonld)
-- [Example](examples/secureworks-query-alerts-example.json)
-- [Spectral Ruleset](rules/secureworks-rules.yml)
-- [Vocabulary](vocabulary/secureworks-vocabulary.yml)
+- [GitHub](https://github.com/secureworks)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 32.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 58.2 |
+| Contract governance | 17.4 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 7.9 |
+
+**Agent readiness 19.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/secureworks/](https://apis.io/providers/secureworks/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Secureworks: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/secureworks/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
